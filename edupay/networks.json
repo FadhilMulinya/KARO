@@ -1,0 +1,8 @@
+{
+  "base-sepolia": {
+    "SchoolFeesPayment": {
+      "address": "0x0F60bD0e3bC1474aFc1D53242368a29F1B649823",
+      "startBlock": 15114775
+    }
+  }
+}

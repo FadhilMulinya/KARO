@@ -1,0 +1,39 @@
+type FeeStructureAdded @entity(immutable: true) {
+  id: Bytes!
+  feeId: BigInt! # uint256
+  grade: String! # string
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type InvoiceCreated @entity(immutable: true) {
+  id: Bytes!
+  invoiceId: BigInt! # uint256
+  studentAddress: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PaymentProcessed @entity(immutable: true) {
+  id: Bytes!
+  invoiceId: BigInt! # uint256
+  studentAddress: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type StudentRegistered @entity(immutable: true) {
+  id: Bytes!
+  studentAddress: Bytes! # address
+  name: String! # string
+  studentId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
