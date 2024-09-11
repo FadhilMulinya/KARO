@@ -1,16 +1,54 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Bell, CreditCard, FileText, Home, LogOut, School, Settings, User, UserPlus, DollarSign, BarChart, CreditCard as PaymentIcon } from 'lucide-react'
+import web3 from '../web3'
+import contract from '../contract'
+import { createThirdwebClient } from "thirdweb";
+import { ConnectButton, useActiveAccount} from "thirdweb/react";
+import { createWallet } from "thirdweb/wallets";
+import { base, sepolia } from "thirdweb/chains";
 // import Link from 'next/link'\
 
 
 export default function Component() {
  const [dashboardType, setDashboardType] = useState('school')
  const [activeSection, setActiveSection] = useState('dashboard')
+ const [walletAddress, setWalletAddress] = useState('')
+
  const [notifications, setNotifications] = useState([
    { id: 1, message: "New payment received", read: false },
    { id: 2, message: "Upcoming fee deadline", read: false },
  ])
 
+ const client = createThirdwebClient({
+  clientId: "468d5f5c59ee852ff57f2190e04cf6dd",
+});
+
+const smartAccount = useActiveAccount();
+
+useEffect(() => {
+  // This function will run whenever smartAccount changes
+  const checkSmartAccount = () => {
+    if (smartAccount) {
+      console.log('Smart account is active:', smartAccount);
+
+      console.log('Smart account address:', smartAccount.address);
+      setWalletAddress(smartAccount.address)
+      console.log('state Smart account address:', walletAddress);
+
+      // Perform any actions you want to take when smartAccount is active
+    } else {
+      console.log('Smart account is not active.');
+      // Handle the case where smartAccount is null or inactive
+    }
+  };
+
+  checkSmartAccount(); // Initial check
+
+  const interval = setInterval(checkSmartAccount, 1000); // Keep checking every second
+
+  // Cleanup on component unmount or smartAccount change
+  return () => clearInterval(interval);
+}, [smartAccount]);
 
  const toggleDashboard = () => {
    setDashboardType(dashboardType === 'student' ? 'school' : 'student')
@@ -33,6 +71,7 @@ export default function Component() {
          <h1 className="text-2xl font-bold text-primary">EduPay</h1>
        </div>
        <nav className="mt-8">
+     
          <SideBarItem
            href="#dashboard"
            icon={<Home className="mr-2 h-5 w-5" />}
@@ -54,6 +93,8 @@ export default function Component() {
            active={activeSection === 'payment'}
            onClick={() => setActiveSection('payment')}
          />
+
+
          {dashboardType === 'school' && (
            <>
              <SideBarItem
@@ -125,8 +166,30 @@ export default function Component() {
                {dashboardType === 'student' ? 'Student' : 'School'}
              </button>
              <button className="text-gray-500 hover:text-gray-700">
-               <LogOut className="h-6 w-6" />
-             </button>
+             {/* <ConnectButton
+              client={createThirdwebClient({
+                clientId: "your-thirdweb-client-id-goes-here",
+              })}
+              wallets={[
+                createWallet("com.coinbase.wallet", {
+                  walletConfig: {
+                    options: "smartWalletOnly",
+                  },
+                  chains: [base, sepolia],
+                }),
+              ]}
+              onConnect={()=>{}}
+              style={{}}
+            />              */}
+
+<ConnectButton
+        client={client}
+        accountAbstraction={{
+          chain: sepolia, // the chain where your smart accounts will be or is deployed
+          sponsorGas: false, // enable or disable sponsored transactions
+        }}
+      />
+            </button>
            </div>
          </div>
        </header>
