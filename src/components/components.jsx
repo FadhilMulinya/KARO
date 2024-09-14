@@ -12,7 +12,8 @@ import { base, sepolia } from "thirdweb/chains";
 export default function Component() {
  const [dashboardType, setDashboardType] = useState('school')
  const [activeSection, setActiveSection] = useState('dashboard')
- const [walletAddress, setWalletAddress] = useState('')
+ const [walletAddress, setWalletAddress] = useState('');
+ const [loading, setLoading] = useState(false);
 
  const [notifications, setNotifications] = useState([
    { id: 1, message: "New payment received", read: false },
@@ -51,7 +52,12 @@ useEffect(() => {
 }, [smartAccount]);
 
  const toggleDashboard = () => {
+  //setLoding to true
+  //prompt user connect address again
+
    setDashboardType(dashboardType === 'student' ? 'school' : 'student')
+   //return null
+   //setLoading false
    setActiveSection('dashboard')
  }
 
@@ -62,6 +68,13 @@ useEffect(() => {
    ))
  }
 
+ if(loading){
+  return(
+    <div>
+      <h1>Loading</h1>
+    </div>
+  )
+ }
 
  return (
    <div className="flex h-screen bg-gray-100">
@@ -95,7 +108,7 @@ useEffect(() => {
          />
 
 
-         {dashboardType === 'school' && (
+         {connect === 'school' && (
            <>
              <SideBarItem
                href="#management"
@@ -134,6 +147,8 @@ useEffect(() => {
              />
            </>
          )}
+
+         
        </nav>
      </aside>
 
@@ -216,21 +231,22 @@ useEffect(() => {
 
 
          {activeSection === 'invoices' && (
-           <div className="bg-white p-6 rounded-lg shadow">
+           <div className="bg-white -6 rounded-lg shadow">
              <h3 className="text-lg font-semibold mb-4">Invoice Management</h3>
-             <p>View and download your invoices here.</p>
+             <button className="bg-primary text-black px-4 py-2 rounded hover:bg-primary/90">View and download your invoices here</button>
            </div>
          )}
 
 
-         {activeSection === 'payment' && (
-           <div className="bg-white p-6 rounded-lg shadow">
-             <h3 className="text-lg font-semibold mb-4">School Fee Payment</h3>
-             <button className="bg-primary text-white px-4 py-2 rounded hover:bg-primary/90">
-               Make Payment
-             </button>
-           </div>
-         )}
+{activeSection === 'payment' && (
+  <div className="bg-white p-6 rounded-lg shadow">
+    <h3 className="text-lg font-semibold mb-4">School Fee Payment</h3>
+    <button className="bg-primary text-black px-4 py-2 rounded hover:bg-primary/90">
+      Make Payment
+    </button>
+  </div>
+)}
+
 
 
          {activeSection === 'management' && dashboardType === 'school' && (
@@ -277,9 +293,9 @@ useEffect(() => {
                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50"
                  >
                    <option>Select a class</option>
-                   <option>Class 1</option>
-                   <option>Class 2</option>
-                   <option>Class 3</option>
+                   <option>Class 1C</option>
+                   <option>Class 2B</option>
+                   <option>Class 3N</option>
                  </select>
                </div>
                <button
