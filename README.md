@@ -1,7 +1,7 @@
  **README** 
 
 
-# School Fees Payment System
+# Edupay
 
 ## Introduction
 
