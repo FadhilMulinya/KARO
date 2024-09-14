@@ -91,6 +91,9 @@ npm install
 # Run the development server
 npm run dev
 ```
+```
+Verified base Sepolia contract Address: 0x0F60bD0e3bC1474aFc1D53242368a29F1B649823
+```
 
 ### Requirements
 
