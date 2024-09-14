@@ -13,12 +13,35 @@ The **edupay** is a decentralized platform that allows students, parents, and gu
 
 ## Problem Statement
 
-Educational institutions in many regions, particularly in developing areas, face challenges such as:
+Here’s a summarized version of the **problem statements** for your GitHub README:
 
-- **Ghost schools**: Fraudulent institutions that claim funds but do not exist or operate.
-- **Ghost projects**: Projects or initiatives that never materialize despite being funded.
+---
 
-The current payment systems for schools are often opaque, with little room for transparency or tracking, leading to inefficiencies, mismanagement, and sometimes fraud.
+### Problem Statements
+
+1. **Lack of Transparency**: Traditional fee systems obscure transactions, leading to confusion and mismanagement. Blockchain ensures transparency and traceable payments.
+
+2. **High Fees & Delays**: Conventional payments, especially international ones, incur high costs and delays. Cryptocurrency offers faster, cheaper transactions.
+
+3. **Inaccessible Financial Services**: Many students, particularly in underbanked regions, struggle to access traditional payment methods. Crypto allows easy payments with just a phone and internet.
+
+4. **Inefficient Payment Tracking**: Manual tracking causes errors and disputes. Blockchain automates and verifies payments, reducing administrative burden.
+
+5. **Fraud & Corruption Risks**: Ghost schools and projects divert funds improperly. Blockchain ensures only verified institutions receive payments, preventing fraud.
+
+6. **Scholarship Management Issues**: Scholarships are often hard to manage. The platform simplifies donor-student connections with transparent fund allocation.
+
+7. **Complex Audits**: Financial oversight is difficult due to poor record-keeping. Blockchain provides an immutable record, simplifying audits.
+
+8. **Payment Status Uncertainty**: Traditional systems cause delays in confirming payments. Blockchain provides real-time payment tracking for schools and students.
+
+9. **Security Concerns**: Traditional systems are prone to breaches. Using decentralized identity (DID) and encryption ensures secure transactions and privacy.
+
+10. **Complicated Fee Structures**: Schools often have complex fee systems. The platform simplifies fee management for schools and offers a clear interface for students.
+
+---
+
+You can now add this summary to your **GitHub account README**!
 
 ## Project Vision
 
