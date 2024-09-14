@@ -9,7 +9,7 @@ import { base, sepolia } from "thirdweb/chains";
 // import Link from 'next/link'\
 
 
-export default function Component() {
+export default function Component({connect}) {
  const [dashboardType, setDashboardType] = useState('school')
  const [activeSection, setActiveSection] = useState('dashboard')
  const [walletAddress, setWalletAddress] = useState('');
